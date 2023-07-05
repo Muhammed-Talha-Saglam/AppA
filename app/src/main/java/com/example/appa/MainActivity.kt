@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity() {
         bindToService()
     }
 
+    override fun onDestroy() {
+        unbindService(aidlServiceConnection)
+        super.onDestroy()
+    }
+
     private fun bindToService() {
         try {
             val intent = Intent("someService.AIDL")
